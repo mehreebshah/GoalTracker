@@ -2,10 +2,7 @@ import streamlit as st
 import json
 import datetime
 import random
-import smtplib
 import matplotlib.pyplot as plt
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 import numpy as np
 
 st.set_page_config(page_title='Goal Tracker', page_icon='📈', layout='wide')
@@ -42,34 +39,11 @@ def save_goals(goals):
     with open('goals.json', 'w') as file:
         json.dump(goals, file, indent=4)
 
-# Email Reminder System
-def send_email_reminder(user_email, goal, deadline):
-    sender_email = "your-email@gmail.com"  # Replace with your email
-    sender_password = "your-app-password"  # Use an App Password if using Gmail
-    receiver_email = user_email
-
-    subject = "⏳ Reminder: Your Goal Deadline is Approaching!"
-    body = f"Hello! Just a friendly reminder that your goal **{goal}** is due on **{deadline}**. Keep pushing forward! 🚀"
-
-    msg = MIMEMultipart()
-    msg["From"] = sender_email
-    msg["To"] = receiver_email
-    msg["Subject"] = subject
-    msg.attach(MIMEText(body, "plain"))
-
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-        st.success("📩 Email Reminder Sent!")
-    except Exception as e:
-        st.error(f"Failed to send email: {e}")
-
 # Goal Input
 goal = st.text_input('Enter your Goal:')
 priority = st.selectbox("📌 Set Priority:", ["High", "Medium", "Low"])
 deadline = st.date_input("Set a Deadline:", min_value=datetime.date.today())
-email = st.text_input("📧 Enter your email for reminders:")
+
 
 if st.button('Save Goal'):
     if goal:
@@ -80,7 +54,7 @@ if st.button('Save Goal'):
             "deadline": str(deadline),
             "progress": 0,
             "streak": 0,
-            "email": email
+            
         }
         goals.append(new_goal)
         save_goals(goals)
@@ -117,8 +91,7 @@ for index, g in enumerate(goals):
 
             if days_left == 1:
                 st.warning(f"⏳ Reminder: Your goal **'{g['goal']}'** is due **tomorrow!** Keep going! 💪")
-                send_email_reminder(g["email"], g["goal"], g["deadline"])
-
+                
 # Save updates
 if updated:
     save_goals(goals)
