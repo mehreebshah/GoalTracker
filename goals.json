@@ -1,0 +1,36 @@
+[
+    {
+        "goal": "create an app",
+        "progress": 12,
+        "priority": "Not Set",
+        "streak": 1
+    },
+    {
+        "goal": "Complete Python in one month",
+        "progress": 26,
+        "priority": "Not Set"
+    },
+    {
+        "goal": "Set up my brand",
+        "category": "Personal Growth",
+        "deadline": "2025-02-19",
+        "progress": 33,
+        "priority": "Not Set",
+        "streak": 1
+    },
+    {
+        "goal": "buy my dream car",
+        "deadline": "2025-02-19",
+        "progress": 59,
+        "priority": "Not Set",
+        "streak": 2
+    },
+    {
+        "goal": "Clear exam",
+        "priority": "High",
+        "deadline": "2025-02-19",
+        "progress": 100,
+        "streak": 2,
+        "email": "shahsyedaareeba8@gmail.com"
+    }
+]
