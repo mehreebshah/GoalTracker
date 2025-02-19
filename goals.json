@@ -14,9 +14,9 @@
         "goal": "Set up my brand",
         "category": "Personal Growth",
         "deadline": "2025-02-19",
-        "progress": 33,
+        "progress": 41,
         "priority": "Not Set",
-        "streak": 1
+        "streak": 2
     },
     {
         "goal": "buy my dream car",
@@ -31,6 +31,14 @@
         "deadline": "2025-02-19",
         "progress": 100,
         "streak": 2,
+        "email": "shahsyedaareeba8@gmail.com"
+    },
+    {
+        "goal": "Visit Suadi Arabia",
+        "priority": "High",
+        "deadline": "2025-02-20",
+        "progress": 5,
+        "streak": 1,
         "email": "shahsyedaareeba8@gmail.com"
     }
 ]

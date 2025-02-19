@@ -96,14 +96,19 @@ updated = False
 for index, g in enumerate(goals):
     if "goal" in g:
         st.write(f"✅ **{g['goal']}** | 📌 Priority: {g['priority']} | ⏳ Deadline: {g.get('deadline', 'Not Set')}")
-        
-        # Progress Tracking
-        progress = st.slider(f"📊 Progress for '{g['goal']}'", 0, 100, g.get("progress", 0))
-        
+
+        # Unique Key for each slider
+        progress = st.slider(
+            f"📊 Progress for '{g['goal']}'", 
+        0, 100, 
+        g.get("progress", 0),
+         key=f"progress_{index}"  # Adding unique key
+)
         if progress > g.get("progress", 0):
             goals[index]["progress"] = progress
             goals[index]["streak"] = goals[index].get("streak", 0) + 1  # Increase streak when progress is made
             updated = True
+
         
 # Check if the deadline is approaching
         if "deadline" in g:
@@ -166,18 +171,6 @@ for g in goals:
         st.success(f"🎖️ **{g['goal']}** - Completed! Well done! 🏆")
     elif g.get("streak", 0) >= 5:
         st.info(f"🔥 **{g['goal']}** - 5-Day Streak! Keep it up!")
-
-# 🎨 Dark Mode Toggle
-if st.checkbox("🌙 Enable Dark Mode"):
-    st.markdown(
-        """
-        <style>
-        body { background-color: #121212; color: white; }
-        .stTextInput, .stSelectbox, .stSlider { color: white; }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
 # Daily Reflection Journal
 st.subheader("📝 Daily Reflection Journal")
