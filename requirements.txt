@@ -1,4 +1,4 @@
 streamlit 
-pandas 
-json 
-random 
+numpy
+matplotlib 
+pandas
